@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatBot Desktop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="dark">
+  <div class="app">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">🤖 ChatBot</div>
+        <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">🌙</button>
+      </div>
+      <div class="mode-selector">
+        <button class="mode-btn active" id="btn-chat" onclick="switchMode('chat')">
+          💬 Chat IA
+        </button>
+        <button class="mode-btn" id="btn-terminal" onclick="switchMode('terminal')">
+          🖥️ Terminal
+        </button>
+      </div>
+      <div class="sidebar-footer">
+        <button class="clear-btn" onclick="clearConversation()">🗑️ Effacer</button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+      <!-- Mode Chat -->
+      <div class="panel" id="panel-chat">
+        <div class="panel-header">
+          <h2>💬 Assistant IA</h2>
+          <span class="status online">En ligne</span>
+        </div>
+        <div class="messages" id="chat-messages"></div>
+        <div class="input-area">
+          <input type="text" id="chat-input" placeholder="Écrivez votre message..." onkeypress="handleChatKey(event)"/>
+          <button class="send-btn" onclick="sendChatMessage()">➤</button>
+        </div>
+      </div>
+
+      <!-- Mode Terminal -->
+      <div class="panel hidden" id="panel-terminal">
+        <div class="panel-header">
+          <h2>🖥️ Terminal</h2>
+          <span class="status online">Windows</span>
+        </div>
+        <div class="terminal-output" id="terminal-output">
+          <div class="terminal-line system">ChatBot Terminal — Windows</div>
+          <div class="terminal-line system">Tapez une commande ou "ai votre demande" pour l'IA.</div>
+          <div class="terminal-line system">─────────────────────────────────</div>
+        </div>
+        <div class="input-area terminal-input-area">
+          <span class="prompt">C:\&gt;</span>
+          <input type="text" id="terminal-input" placeholder="Entrez une commande..." onkeypress="handleTerminalKey(event)"/>
+          <button class="send-btn" onclick="runTerminalCommand()">▶</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="renderer.js"></script>
+</body>
+</html>
